@@ -78,6 +78,7 @@ import org.icyphy.linguaFranca.WidthSpec
 
 import static extension org.icyphy.ASTUtils.*
 import org.icyphy.TargetProperty
+import org.icyphy.linguaFranca.STP
 
 /**
  * Custom validation checks for Lingua Franca programs.
@@ -514,6 +515,17 @@ class LinguaFrancaValidator extends AbstractLinguaFrancaValidator {
     def checkDeadline(Deadline deadline) {
         if (this.target == Target.C &&
             this.info.overflowingDeadlines.contains(deadline)) {
+            error(
+                "Deadline exceeds the maximum of " +
+                    TimeValue.MAX_LONG_DEADLINE + " nanoseconds.",
+                Literals.DEADLINE__DELAY)
+        }
+    }
+    
+    @Check(FAST)
+    def checkSTPOffset(STP stp) {
+        if (this.target == Target.C &&
+            this.info.overflowingDeadlines.contains(stp)) {
             error(
                 "Deadline exceeds the maximum of " +
                     TimeValue.MAX_LONG_DEADLINE + " nanoseconds.",

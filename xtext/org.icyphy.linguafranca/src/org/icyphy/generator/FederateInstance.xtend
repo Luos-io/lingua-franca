@@ -43,6 +43,7 @@ import static extension org.icyphy.ASTUtils.*
 import org.icyphy.linguaFranca.Delay
 import org.icyphy.linguaFranca.ActionOrigin
 import org.icyphy.TimeValue
+import org.icyphy.linguaFranca.Port
 
 /** 
  * Instance of a federate, or marker that no federation has been defined
@@ -90,7 +91,8 @@ class FederateInstance {
     public var Set<String> containedReactorNames = new LinkedHashSet<String>
     
     /**
-     * A list of ...
+     * A list of outputs of this federate that are connected to a physical action
+     * inside this federate (it could be in a contained reactor).
      */
     public var outputsConnectedToPhysicalActions = new LinkedHashSet<Delay>()
     
@@ -151,6 +153,12 @@ class FederateInstance {
      * scheduling the appropriate action.
      */
     public var outboundP2PConnections = new LinkedHashSet<FederateInstance>()
+    
+    
+    /**
+     * The set of network input ports for this federate instance...
+     */
+    public var networkInputPorts = new LinkedHashSet<Port>()
 
     /////////////////////////////////////////////
     //// Public Methods
