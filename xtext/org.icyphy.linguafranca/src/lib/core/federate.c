@@ -1108,16 +1108,18 @@ void handle_timed_message(int socket, unsigned char* buffer, int fed_id) {
     if (compare_tags(tag, get_current_tag()) == 0 &&
         _fed.network_input_port_triggers[port_id]->is_absent == false) {
 
-        DEBUG_PRINT("Inserting reactions directly at tag (%lld, %u).", tag.time - start_time, tag.microstep);
+        LOG_PRINT("Inserting reactions directly at tag (%lld, %u).", tag.time - start_time, tag.microstep);
+        action->intended_tag = tag;
         _lf_insert_reactions_for_trigger(action, message_token);
         // Notify the main thread in case it is waiting for reactions.
         DEBUG_PRINT("Broadcasting notification that reaction queue changed.");
         pthread_cond_broadcast(&reaction_q_changed);
+        pthread_cond_broadcast(&event_q_changed);
     } else {
         // Acquire the one mutex lock to prevent logical time from advancing
         // during the call to schedule().
 
-        DEBUG_PRINT("Calling schedule with tag (%lld, %u).", tag.time - start_time, tag.microstep);
+        LOG_PRINT("Calling schedule with tag (%lld, %u).", tag.time - start_time, tag.microstep);
         schedule_message_received_from_network_already_locked(action, tag, message_token);
     }
 
@@ -1775,4 +1777,17 @@ void enqueue_network_dependent_reactions(pqueue_t* reaction_q){
            pqueue_insert(reaction_q, reaction);
        }
     }
+}
+
+/**
+ * ...
+ */
+bool all_network_inputs_are_accounted_for() {
+    for (int i = 0; i < _fed.network_input_port_triggers_size; i++) {
+        if (_fed.network_input_port_triggers[i]->is_absent == false &&
+            _fed.network_input_port_triggers[i]->is_present == false) {
+                return false;
+            }
+    }
+    return true;
 }
