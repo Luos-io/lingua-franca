@@ -406,6 +406,8 @@ class ASTUtils {
         // Name the newly created action; set its delay and type.
         action.name = getUniqueIdentifier(parent, "networkMessage")
         action.type = type
+        action.minDelay = factory.createValue
+        action.minDelay.time = factory.createTime
         
         // The connection is 'physical' if it uses the ~> notation.
         if (connection.physical) {
@@ -417,10 +419,11 @@ class ASTUtils {
             // provided using after is enforced by setting
             // the minDelay.
             if (connection.delay !== null) {
-                action.minDelay = factory.createValue
-                action.minDelay.time = factory.createTime
                 action.minDelay.time.interval = connection.delay.interval
                 action.minDelay.time.unit = connection.delay.unit
+            } else {
+                action.minDelay.time.interval = 0;
+                action.minDelay.time.unit = TimeUnit.NONE;
             }
         } else {
             // If the connection is logical but coordination
@@ -431,6 +434,8 @@ class ASTUtils {
                 rightFederate.inboundP2PConnections.add(leftFederate)                
             }            
             action.origin = ActionOrigin.LOGICAL
+            action.minDelay.time.interval = 0;
+            action.minDelay.time.unit = TimeUnit.NONE;
         }
         
         // Record this action in the right federate.
