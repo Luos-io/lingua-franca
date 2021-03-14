@@ -3609,7 +3609,7 @@ class CGenerator extends GeneratorBase {
                 pr(initializeTriggerObjects,
                     '''
                     «nameOfSelfStruct»->___«action.name».token = __create_token(«payloadSize»);
-                    «nameOfSelfStruct»->___«action.name».is_present = false;
+                    «nameOfSelfStruct»->___«action.name».status = absent;
                     '''
                 )
                 // At the start of each time step, we need to initialize the is_present field
@@ -3619,7 +3619,7 @@ class CGenerator extends GeneratorBase {
                     __tokens_with_ref_count[«startTimeStepTokens»].token
                             = &«nameOfSelfStruct»->___«action.name».token;
                     __tokens_with_ref_count[«startTimeStepTokens»].is_present
-                            = &«nameOfSelfStruct»->___«action.name».is_present;
+                            = (bool*)&«nameOfSelfStruct»->___«action.name».status;
                     __tokens_with_ref_count[«startTimeStepTokens»].reset_is_present = true;
                 ''')
                 startTimeStepTokens++
@@ -4330,7 +4330,7 @@ class CGenerator extends GeneratorBase {
                 // of this trigger for the current logical time.
                 // The is_present field for triggers of ports appears
                 // to be unused for any other meaningful purpose
-                self->___«port.name».is_present = true;
+                self->___«port.name».status = present;
                 return;
             }
         ''')
@@ -4383,7 +4383,7 @@ class CGenerator extends GeneratorBase {
                                 // of this trigger for the current logical time
                                 // The is_present field for triggers of ports appears
                                 // to be unused for any other meaningful purpose
-                                self->___«port.name».is_present = true;
+                                self->___«port.name».status = present;
                                 // Unlock the mutex
                                 pthread_mutex_unlock(&mutex);
                                 return;
@@ -4401,7 +4401,7 @@ class CGenerator extends GeneratorBase {
                     // value of the trigger accordingly
                     // so that the receiving logic cannot
                     // insert any further reaction
-                    self->___«port.name».is_absent = true;
+                    self->___«port.name».status = absent;
                 }
                 pthread_mutex_unlock(&mutex);
                 LOG_PRINT("------ Done waiting for network input port \"«port.name»\".");
@@ -4871,7 +4871,7 @@ class CGenerator extends GeneratorBase {
             // Expose the action struct as a local variable whose name matches the action name.
             «structType»* «action.name» = &self->__«action.name»;
             // Set the fields of the action struct to match the current trigger.
-            «action.name»->is_present = self->___«action.name».is_present;
+            «action.name»->is_present = (bool)self->___«action.name».status;
             «action.name»->has_value = («tokenPointer» != NULL && «tokenPointer»->value != NULL);
             «action.name»->token = «tokenPointer»;
         ''')
