@@ -2143,7 +2143,7 @@ abstract class GeneratorBase extends AbstractLinguaFrancaValidator {
                                     }
                                 }
                             }
-                        } */
+                        }
                     }
                 }
                 // To avoid concurrent modification exception, collect a list
