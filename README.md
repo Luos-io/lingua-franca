@@ -1,5 +1,6 @@
 [![Build Status](https://github.com/icyphy/lingua-franca/workflows/CI/badge.svg)](https://github.com/icyphy/lingua-franca/actions/)
 [![Discourse status](https://img.shields.io/badge/Community-online-blue)](https://community.lf-lang.org/)
+[![](https://img.shields.io/reddit/subreddit-subscribers/Luos?style=social)](https://www.reddit.com/r/Luos)
 
 # Lingua Franca
 
@@ -9,3 +10,8 @@ See the main [wiki](https://github.com/icyphy/lingua-franca/wiki) for further in
 
 See our [Publications and Presentations](https://github.com/icyphy/lingua-franca/wiki/Publications-and-Presentations).
 
+## Don't hesitate to read [our documentation](https://docs.luos.io), or to post your questions/issues on the [Luos' subreddit](https://www.reddit.com/r/Luos/). :books:
+
+[![](https://img.shields.io/reddit/subreddit-subscribers/Luos?style=social)](https://www.reddit.com/r/Luos)
+[![](https://img.shields.io/badge/Luos-Documentation-34A3B4)](https://docs.luos.io)
+[![](https://img.shields.io/badge/LinkedIn-Follow%20us-0077B5?style=flat&logo=linkedin)](https://www.linkedin.com/company/luos)
