@@ -1,5 +1,12 @@
-[![Build Status](https://github.com/icyphy/lingua-franca/workflows/CI/badge.svg)](https://github.com/icyphy/lingua-franca/actions/)
-[![Discourse status](https://img.shields.io/badge/Community-online-blue)](https://community.lf-lang.org/)
+<a href="https://luos.io"><img src="https://uploads-ssl.webflow.com/601a78a2b5d030260a40b7ad/603e0cc45afbb50963aa85f2_Gif%20noir%20rect.gif" alt="Luos logo" title="Luos" align="right" height="100" /></a>
+
+![](https://github.com/Luos-io/luos_engine/actions/workflows/build.yml/badge.svg)
+[![](https://img.shields.io/github/license/Luos-io/Get_started)](https://github.com/Luos-io/luos_engine/blob/master/LICENSE)
+[![](https://img.shields.io/badge/Luos-Documentation-34A3B4)](https://www.luos.io/docs)
+[![](http://certified.luos.io)](https://www.luos.io)
+[![PlatformIO Registry](https://badges.registry.platformio.org/packages/luos/library/luos_engine.svg)](https://registry.platformio.org/libraries/luos/luos_engine)
+
+[![](https://img.shields.io/discord/902486791658041364?label=Discord&logo=discord&style=social)](http://bit.ly/JoinLuosDiscord)
 [![](https://img.shields.io/reddit/subreddit-subscribers/Luos?style=social)](https://www.reddit.com/r/Luos)
 
 # Lingua Franca
@@ -10,8 +17,4 @@ See the main [wiki](https://github.com/icyphy/lingua-franca/wiki) for further in
 
 See our [Publications and Presentations](https://github.com/icyphy/lingua-franca/wiki/Publications-and-Presentations).
 
-## Don't hesitate to read [our documentation](https://docs.luos.io), or to post your questions/issues on the [Luos' subreddit](https://www.reddit.com/r/Luos/). :books:
-
-[![](https://img.shields.io/reddit/subreddit-subscribers/Luos?style=social)](https://www.reddit.com/r/Luos)
-[![](https://img.shields.io/badge/Luos-Documentation-34A3B4)](https://docs.luos.io)
-[![](https://img.shields.io/badge/LinkedIn-Follow%20us-0077B5?style=flat&logo=linkedin)](https://www.linkedin.com/company/luos)
+## Don't hesitate to read [our documentation](https://www.luos.io/docs), or to post your questions/issues on the [Luos' Discord server](https://discord.gg/luos). :books:
